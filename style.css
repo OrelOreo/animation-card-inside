@@ -1,0 +1,85 @@
+*,::before,::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #f1f1f1;
+}
+
+.card {
+    width: 300px;
+    height: 80px;
+    margin: 40px auto;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+p,h2 {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.card-description {
+    width: auto;
+}
+.anim-card {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightblue;
+    opacity: 0;
+}
+
+.anim-card:hover {
+    opacity: 1;
+    animation: apparition 0.9s forwards;
+}
+
+.fa-solid {
+    color: lightblue;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spinnerIcon 0.9s forwards;
+}
+
+@keyframes apparition {
+    from {
+        transform: translateX(35px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes spinnerIcon {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Problèmes :
+- Animation spinnerIcon se lance dès le chargement de la page car je ne peux pas donner ces deux animations à la card,
+  parce que ça va prendre des transformations que je veux que sur un élément enfant et pas sur le parent.
+  
+- Faire en sorte que quand je survole la card, l'animation de bloc-anim se lance et rétrécit le bloc-description
+  */
